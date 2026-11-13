@@ -374,3 +374,22 @@ window.addEventListener("DOMContentLoaded", (_event) => {
     injectStyle(topPaddingCSS, "pake-top-padding-style");
   }
 });
+// === Custom Google Tasks ===
+(function () {
+  const add = () => {
+    const s = document.createElement('style');
+    s.textContent = `
+      header, [role="banner"] { display: none !important; }
+      [role="complementary"],
+      [aria-label*="side panel" i],
+      [aria-label*="painel lateral" i] { display: none !important; }
+      html, body { overflow-x: hidden !important; }
+    `;
+    document.head.appendChild(s);
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', add);
+  } else {
+    add();
+  }
+})();
